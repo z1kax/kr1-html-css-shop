@@ -3,21 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Контактная информация учебного интернет-магазина.">
-  <title>Контакты – Учебный интернет-магазин</title>
+  <meta name="description" content="Контакты магазина клавиатур KeyStore.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Контакты - KeyStore">
+  <meta property="og:description" content="Контактная информация магазина клавиатур KeyStore.">
+  <meta property="og:image" content="https://z1kax.github.io/kr1-html-css-shop/images/preview.jpg">
+
+  <title>Контакты - KeyStore</title>
+
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">ShopProject</a>
+      <a class="site-header__logo" href="index.html">KeyStore</a>
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="product.html">Карточка товара</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
           <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
         </ul>
       </nav>
     </div>
@@ -30,25 +38,28 @@
     </nav>
 
     <section class="section">
-      <h1 class="section__title">Контакты</h1>
-      <p>Здесь размещается контактная информация учебного интернет-магазина.</p>
-      <ul class="contacts-list">
-        <li class="contacts-list__item">Телефон: +7 (900) 000-00-00</li>
-        <li class="contacts-list__item">E-mail: info@example.com</li>
-        <li class="contacts-list__item">Адрес: г. Москва, учебный проект</li>
+      <h1>Контакты</h1>
+      <p>Свяжитесь с нами любым удобным способом.</p>
+      <ul>
+        <li>Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></li>
+        <li>E-mail: <a href="mailto:info@keystore.example">info@keystore.example</a></li>
+        <li>Адрес: г. Москва, ул. Учебная, д. 1</li>
+        <li>Режим работы: пн-пт, 10:00-19:00</li>
       </ul>
     </section>
 
     <section class="section" id="feedback">
-      <h2 class="section__title">Обратная связь</h2>
-      <p>Для отправки заявки используйте форму в модальном окне на главной странице.</p>
-      <a class="button button--primary" href="index.html#contacts">Перейти к форме</a>
+      <h2>Обратная связь</h2>
+      <p>Для отправки заявки используйте форму на странице оформления заявки.</p>
+      <a class="button button--primary" href="order.html">Перейти к форме</a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>&copy; 2026 KeyStore. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
+
+  <a class="button button--primary scroll-top" href="#" aria-label="Наверх">↑</a>
 </body>
 </html>
