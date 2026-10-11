@@ -13,6 +13,7 @@ const selectedProductInput = document.getElementById('selected-product');
 // Перебираем все кнопки «Заказать».
 orderButtons.forEach((button) => {
   button.addEventListener('click', () => {
+    if (!orderDialog || !selectedProductInput) return;
     const productName = button.dataset.product;
     selectedProductInput.value = productName;
     orderDialog.showModal();
@@ -20,36 +21,44 @@ orderButtons.forEach((button) => {
 });
 
 // Закрываем модальное окно по кнопке «Закрыть».
-closeDialogButton.addEventListener('click', () => {
-  orderDialog.close();
-});
+if (closeDialogButton && orderDialog) {
+  closeDialogButton.addEventListener('click', () => {
+    orderDialog.close();
+  });
+}
 
 // Получаем форму заявки.
 const orderForm = document.getElementById('order-form');
 const successMessage = document.getElementById('success-message');
 
-// Обрабатываем отправку формы.
-orderForm.addEventListener('submit', (event) => {
-  event.preventDefault();
+// Обрабатываем отправку формы (если она есть на странице).
+if (orderForm) {
+  orderForm.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  const formElements = Array.from(orderForm.elements);
-  formElements.forEach((element) => {
-    if (element.willValidate) {
-      element.removeAttribute('aria-invalid');
-    }
-  });
-
-  if (!orderForm.checkValidity()) {
+    const formElements = Array.from(orderForm.elements);
     formElements.forEach((element) => {
-      if (element.willValidate && !element.checkValidity()) {
-        element.setAttribute('aria-invalid', 'true');
+      if (element.willValidate) {
+        element.removeAttribute('aria-invalid');
       }
     });
-    orderForm.reportValidity();
-    return;
-  }
 
-  successMessage.hidden = false;
-  orderForm.reset();
-  orderDialog.close();
-});
+    if (!orderForm.checkValidity()) {
+      formElements.forEach((element) => {
+        if (element.willValidate && !element.checkValidity()) {
+          element.setAttribute('aria-invalid', 'true');
+        }
+      });
+      orderForm.reportValidity();
+      return;
+    }
+
+    if (successMessage) {
+      successMessage.hidden = false;
+    }
+    orderForm.reset();
+    if (orderDialog) {
+      orderDialog.close();
+    }
+  });
+}
